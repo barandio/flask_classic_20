@@ -9,9 +9,11 @@ class DBManager():
 
         cur = conexion.cursor()
         cur.execute(consulta)
+
         keys = []
         for item in cur.description:
             keys.append(item[0])
+            
         registros = []
         for registro in cur.fetchall():
             ix_clave = 0
