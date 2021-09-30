@@ -1,11 +1,14 @@
 from flask_wtf import FlaskForm
 from wtforms import DateField
 from wtforms.fields.core import FloatField, RadioField, StringField
-from wtforms.fields.simple import SubmitField
+from wtforms.fields.simple import HiddenField, SubmitField
 from wtforms.validators import DataRequired, Length, NumberRange
 
 
 class MovimientoFormulario(FlaskForm):
+
+    id = HiddenField()
+    
     fecha = DateField("Fecha", validators=[DataRequired(message="Debe informar la fecha")])
     concepto = StringField("Concepto", validators=[DataRequired(message="Debe informar el concepto"), Length(min=10)])
     cantidad = FloatField("Cantidad", validators=[DataRequired(message="Debe informar el monto del movimiento"), 
